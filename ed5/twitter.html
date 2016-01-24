@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="../site.css">
+        <link rel="stylesheet" type="text/css" href="ed5.css">
+        <title>Bastidores do livro: ao vivo no twitter :: Livro Expressões Regulares - 5ª edição</title>
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <meta name="author" content="Aurelio Marinho Jargas www.aurelio.net">
+        <link rel="image_src" type="image/png" href="http://aurelio.net/img/icon/128/livroregex5.png">
+    </head>
+    <body>
+        <div class="header" id="header">
+            <h1>
+                Bastidores do livro: ao vivo no twitter
+            </h1>
+        </div>
+        <div id="main">
+
+            <div id="topbanner">
+                <a href="../"><img src="../img/regex5-128.png" alt=""></a>
+                <h1>
+                    <a href="../">Livro Expressões Regulares<br>
+                    5ª edição</a>
+                </h1>
+            </div>
+
+            <h2>
+                Bastidores do livro: ao vivo no twitter
+            </h2>
+            <p>
+                Escrever é uma tarefa solitária e cansativa. É preciso concentração extrema, sem barulho nem distrações, horas a fio, senão o texto não sai.
+            </p>
+            <p>
+                Para quebrar um pouco este isolamento, uso o meu twitter (<a href="http://twitter.com/oreio">@oreio</a>) para divulgar “ao vivo” os progressos da escrita, dando a chance de os leitores acompanharem e participarem no processo.
+            </p>
+            <p>
+                Foram várias mensagens enviadas, todas com a hashtag <a href="http://twitter.com/search?q=%23piazinho5">#piazinho5</a>. Quem acompanhou, percebeu como foi intenso o trabalho para essa nova edição. Quem não acompanhou, aqui vai de lambuja todas as mensagens, para você poder sentir um pouco do gostinho de participar de um livro enquanto ele está sendo feito.
+            </p>
+
+            <h2>Preparativos</h2>
+
+            <ul>
+                <li>2015-09-01 — Pesquisa #piazinho5: O que você gostaria que fosse adicionado em uma nova edição do livro Expressões Regulares?</li>
+            </ul>
+
+            <h2>Nginx</h2>
+
+            <ul>
+                <li>2015-09-07 — Hoje comecei a trabalhar no #piazinho5! O primeiro tópico novo que vou escrever é sobre o servidor nginx. Nunca usei, estou estudando agora.</li>
+                <li>2015-09-07 — Pergunta para os ninjas de Nginx. Achei suporte a regex nas diretivas: <code>location</code>, <code>server_name</code>, <code>rewrite</code>, <code>if</code>. Tem mais alguma?</li>
+
+                <li>2015-09-08 — #nginx Ok, vasculhei toda a documentação e o código-fonte e achei 13 diretivas que suportam regex!</li>
+                <li>2015-09-08 — Gostei do Nginx, fácil configurar. Mas o suporte a regex é meio caótico. Várias sintaxes diferentes e pegadinhas com ignorecase.</li>
+                <li>2015-09-08 — #nginx Olha uma pegadinha: a diretiva <code>server_name</code> é ignorecase somente se tiver A-Z na regex 😱 <a href="https://github.com/nginx/nginx/blob/5e0b936a07bf9a2c4cbbe353a9a0277c782ffbf6/src/http/ngx_http_core_module.c#L4400">https://github.com/nginx/nginx/blob/5e0b936a07bf9a2c4cbbe353a9a0277c782ffbf6/src/http/ngx_http_core_module.c#L4400</a></li>
+
+                <li>2015-09-11 — Ainda no Nginx. É tão mais difícil escrever "picadinho", com poucas horas por dia. O progresso é muito lento.</li>
+
+                <li>2015-09-12 — Aeeee, consegui terminar o primeiro tópico novo do livro: Nginx. Foram 19h de trabalho em 6 dias. Ficou com 7 páginas, completão.</li>
+                <li>2015-09-12 — Já coloquei no meu site a referência de regex para o Nginx, que complementa o tópico do livro: <a href="http://aurelio.net/regex/nginx/" title="Expressões Regulares + Nginx :: aurelio.net">http://aurelio.net/regex/nginx/</a></li>
+                <li>2015-09-12 — #nginx Pela tabelona no início, já dá pra perceber que tem muitas diretivas e várias sintaxes diferentes :/ <a href="http://aurelio.net/regex/nginx/" title="Expressões Regulares + Nginx :: aurelio.net">http://aurelio.net/regex/nginx/</a></li>
+            </ul>
+
+            <h2>Notepad++</h2>
+
+            <ul>
+                <li>2015-09-19 — Aqui estou eu, no Windows 10, pesquisando e fazendo diversos testes, para poder escrever um tópico sobre o Notepad++ para o #piazinho5</li>
+                <li>2015-09-19 — Pensei: "nem deve ter muita coisa pra falar do Notepad++". Horas depois, ainda estou aqui testando e escrevendo :)</li>
+
+                <li>2015-09-20 — Viva! Terminei o tópico sobre o Notepad++. Trabalhei 11 horas e deu 3 páginas. Referência online: <a href="http://aurelio.net/regex/npp/" title="Expressões Regulares + Notepad++ :: aurelio.net">http://aurelio.net/regex/npp/</a></li>
+            </ul>
+
+            <h2>PowerShell</h2>
+
+            <ul>
+                <li>2015-09-20 — Continuando os trabalhos, agora é a vez do PowerShell. Nunca usei. Vamos ver como é essa shell do Windows. Vai que eu gosto? :)</li>
+
+                <li>2015-10-05 — Já investi 18h de trabalho no tópico de PowerShell (estudos+escrita). Tá ficando enorme, tem muita coisa pra falar! Tou curtindo.</li>
+                <li>2015-10-05 — Acentuação + regex funciona 100% no PowerShell: <code>\w</code>, case insensitive match, e até nos nomes dos grupos.</li>
+                <li>2015-10-05 — Parecido com o Bash e seu array <code>$BASH_REMATCH</code>, no PowerShell o resultado do match fica na HashTable <code>$matches</code>.</li>
+                <li>2015-10-05 — Imagine se o comando '<code>case</code>' no Bash além de glob também aceitasse regex. No PowerShell tem, com o comando '<code>switch</code>' <a href="https://technet.microsoft.com/en-us/library/ff730937.aspx">https://technet.microsoft.com/en-us/library/ff730937.aspx</a></li>
+                <li>2015-10-05 — #powershell Array com todas as palavras de um texto:<br>
+                <code>$texto | Select-String -AllMatches '\w+' | foreach { $_.Matches.Value }</code></li>
+
+                <li>2015-10-06 — Dá pra fazer substituições aninhadas no PowerShell:<br>
+                <code>PS> 'Power' -Replace '^', 'PP' -Replace 'P', 'P-' -Replace '$', '!'</code><br>
+                <code>P-P-P-ower!</code></li>
+
+                <li>2015-10-13 — Terminei o tópico de PowerShell! Deu 24h de trabalho e ficou enorme, com 10 páginas. Curti mesmo a shell, bem interessante.</li>
+            </ul>
+
+            <p>
+                <a href="../">« Voltar para a página principal desta edição</a>
+            </p>
+
+        </div><!--main-->
+
+        <!-- #################################################################### -->
+
+        <div id="footer">
+            Fale com o autor: <a href="http://twitter.com/oreio">@oreio</a>
+        </div>
+
+        <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script><script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-280222-9");
+        pageTracker._trackPageview();
+        </script>
+    </body>
+</html>
