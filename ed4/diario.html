@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../site.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="ed4.css">
+<TITLE>Bastidores do livro: diário de bordo :: Livro Expressões Regulares - 4ª edição</TITLE>
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="author" content="Aurelio Marinho Jargas www.aurelio.net">
+<link rel="image_src" type="image/png" href="http://aurelio.net/img/icon/128/livroregex4.png" />
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>Bastidores do livro: diário de bordo</H1>
+</DIV>
+
+<DIV ID="main">
+
+<div id="topbanner">
+	<a href="../"><img src="../img/regex4-128.png" alt=""></a>
+	<a href="../"><h1>Livro Expressões Regulares<br>4ª edição</h1></a>
+</div>
+
+<H2>Bastidores do livro: diário de bordo</H2>
+
+<P>
+Eu postei lá na <A HREF="https://www.facebook.com/ExpressoesRegulares">fanpage do livro no Facebook</A> relatórios completos cada vez que eu terminava um tópico novo ou alguma tarefa importante durante o trabalho de escrita desta edição.
+</P>
+	<BLOCKQUOTE>
+	Tipo relatório pro chefe saber que você não está vadiando, sabe como?
+	</BLOCKQUOTE>
+<P>
+Aqui estão todos estes relatórios, melhor formatados e fora do mundinho Facebook. Lendo você vai entender qual a rotina do trabalho de escritor, os problemas, as dúvidas, as conquistas.
+</P>
+<P>
+Veja também:
+</P>
+
+<UL>
+<LI><A HREF="../ed4/twitter.html">Bastidores do livro: ao vivo no twitter</A>
+<LI>Relato em meu blog: <A HREF="http://aurelio.net/blog/2012/08/25/rotina-de-escritor/">Rotina de escritor</A>
+<LI>Relato em meu blog: <A HREF="http://aurelio.net/blog/2012/07/05/piazinho-4-a-missao/">Piazinho 4 – A missão</A>
+</UL>
+
+<H2>2012-08-21</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/356878361053836">https://www.facebook.com/ExpressoesRegulares/posts/356878361053836</A>
+</P>
+<P>
+Ontem comecei o trabalho "de verdade" para a 4ª edição do livro.
+</P>
+<P>
+Decidi reescrever o tópico sobre Python, que estava muito resumido na 3ª edição. A linguagem traz um excelente suporte às expressões regulares, tem muita coisa para demonstrar e explicar.
+</P>
+<P>
+Após 13 horas de escrita, terminei a versão nova do tópico, que pulou de 2 páginas e meia para cerca de 10!
+</P>
+<P>
+Acho que até passei do ponto, indo mais fundo do que o necessário, mas tenho certeza que os programadores Python vão adorar este presente.
+</P>
+<P>
+Agora o tópico ficou bem completo, criei mais um monte de exemplos de código, mostrando tudo o que o Python tem pra oferecer nas regex.
+</P>
+<P>
+Veja uma prévia do que foi explicado:
+</P>
+
+<UL>
+<LI>Você pesquisa com o <CODE>re.search()</CODE> e tem como resultado um objeto com informações sobre o casamento: texto casado, posição inicial e final, conteúdo dos grupos, ...
+<P></P>
+<LI>Para obter todas as ocorrências de uma vez, você usa o <CODE>re.findall()</CODE>, e para fazer um loop nos casamentos, usa <CODE>re.finditer()</CODE>. Dentro do loop, o <CODE>re.expand()</CODE> quebra um galhão para expandir os retrovisores.
+<P></P>
+<LI>Você faz substituições com o <CODE>re.sub()</CODE> e pode especificar um número máximo de vezes e pode até uma usar uma função no lugar do texto substituto, para mágicas realmente impressionantes.
+<P></P>
+<LI>Dividir um texto é com o <CODE>re.split()</CODE> e para compilar a expressão usa o <CODE>re.compile()</CODE>.
+<P></P>
+<LI>Também é possível colocar nomes no grupos, para facilitar na hora de obter o seu conteúdo sem precisar ficar contando os números dos parênteses.
+<P></P>
+<LI>Várias flags estão disponíveis para modificar a expressão, como <CODE>(?i)</CODE> para ignorecase, <CODE>(?u)</CODE> para lidar com textos em Unicode e <CODE>(?x)</CODE> para poder alinhar e comentar a expressão. Eu expliquei todas elas: <CODE>i</CODE>, <CODE>u</CODE>, <CODE>L</CODE>, <CODE>X</CODE>, <CODE>m</CODE>, <CODE>s</CODE>.
+</UL>
+
+<P>
+Que tal? Disponível daqui algumas semanas, no #piazinho4 :)
+</P>
+
+<H2>2012-08-22</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/357147144360291">https://www.facebook.com/ExpressoesRegulares/posts/357147144360291</A>
+</P>
+<P>
+Depois da reescrita do tópico de Python, ontem escrevi o primeiro tópico *novo* para a 4ª edição do piazinho.
+</P>
+<P>
+É sobre o comando find, do Unix, que tem a opção <CODE>-regex</CODE> para nosso deleite. Levei 5 horas e calculo que vai dar umas 5 páginas no livro.
+</P>
+<P>
+Eu achei que iria dar um tópico curtinho, com no máximo duas páginas. Mas à medida que fui escrevendo e testando, as pegadinhas começaram a aparecer.
+</P>
+<P>
+Ele não faz casamentos parciais, se colocar a opção no lugar errado dá erro e há diferenças entre a versão do find para Linux (GNU) e do find para BSD (Mac, FreeBSD).
+</P>
+<P>
+E para completar a bagunça, há VÁRIOS tipos de expressões regulares disponíveis: dois no BSD e cinco (!!!) no GNU. Tive que fazer duas tabelas listando todos os metacaracteres de cada tipo, para você saber o que pode usar em cada tipo. Pense numa tarefa chata :)
+</P>
+
+<H2>2012-08-23</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/357523900989282">https://www.facebook.com/ExpressoesRegulares/posts/357523900989282</A>
+</P>
+<P>
+A escrita da edição nova continua. Já fiz Python e find, agora o tópico da vez é o servidor web Apache.
+</P>
+<P>
+Porém ontem foi um dia que não rendeu. Escrevi durante várias horas, não consegui achar o caminho do texto, me perdi, patinei e no fim joguei fora tudo o que escrevi.
+</P>
+<P>
+Foram 3 horas pesquisando a documentação do Apache, para encontrar e entender todas as diretivas (configurações) dele que aceitam expressões regulares. Eu achava que seriam poucas (<CODE>RewriteCond</CODE>, <CODE>RewriteRule</CODE> e mais algumas), mas encontrei 29!
+</P>
+<P>
+Depois mais uma meia hora pra configurar o Apache e fazer um site local para os testes. Deu tudo certo nos testes.
+</P>
+<P>
+Mas daí travei. O texto não saiu. Escrevia, apagava, escrevia, apagava, escrevia, escrevia, apagava tudo e começava do zero. São muitas informações, muitas diretivas, muitos conceitos. Não consegui enxergar um roteiro didático, que começasse explicando as coisas simples primeiro.
+</P>
+<P>
+E não adianta forçar. Se não encontrar o caminho e não estiver inspirado, o texto que sair vai ser pobre e confuso. Tentei por mais de 5 horas, escrevi, escrevi, escrevi e no final, ficou uma droga. Já era uma da manhã quando finalmente desisti.
+</P>
+<P>
+Hoje de manhã fui ler notícias, ouvi um podcast, para poder zerar a mente. Agora aqui estou eu, pronto para começar tudo de novo e vamos ver se hoje esse texto sai. Tomara :)
+</P>
+
+<H2>2012-08-27</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/358722600869412">https://www.facebook.com/ExpressoesRegulares/posts/358722600869412</A>
+</P>
+<P>
+Neste final de semana trabalhei 4h no sábado e 10h no domingo, mas ainda não consegui terminar o texto sobre o servidor web Apache. Ao todo já investi 35 horas de trabalho neste assunto.
+</P>
+<P>
+Para comparação, o tópico sobre Python levei 13 horas ao todo e ficou com 10 páginas. Este do Apache ainda está com 8 páginas.
+</P>
+<P>
+Para você ter uma ideia de quantas vezes já reescrevi este texto, atualmente ele conta com 186 linhas-fonte (cada uma pode ser uma linha de código ou um parágrafo completo) enquanto outras 369 estão desativadas, que são versões anteriores e descartadas destas linhas. Isso dá uma média de 3 versões para cada parágrafo.
+</P>
+<P>
+Estou com muita dificuldade para conseguir simplificar o assunto. Ele é vasto, complexo, e necessita de conhecimento prévio sobre o funcionamento do servidor. Se eu só falar sobre expressões regulares, vai ficar um texto perdido no meio do nada, sem utilidade prática. Se eu falar demais sobre o funcionamento do Apache, o texto vai ficar enorme e vou sair do tópico proposto. Mas o fato é que preciso achar um meio termo, pois tenho que falar sobre ambos para poder explicar o que quero.
+</P>
+<P>
+Enquanto procuro ajustar esta balança, vou reescrevendo.
+</P>
+<P>
+Felizmente, após tantas horas de trabalho, já consegui passar da metade do texto. Estimo que no final vai ficar entre 10 e 12 páginas. Seria bom se eu conseguisse terminar hoje, mas tenho minhas dúvidas.
+</P>
+<P>
+Bem, por hoje é isso. Um pouco do "lado negro" da rotina de escritor. Nem sempre o texto sai fácil.
+</P>
+
+<H2>2012-08-28</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/386894224711972">https://www.facebook.com/ExpressoesRegulares/posts/386894224711972</A>
+</P>
+<P>
+Ontem trabalhei durante 13h, e finalmente às duas da manhã consegui terminar o tópico sobre o Apache. \o/
+</P>
+<P>
+Foram seis dias seguidos (!!!) neste tópico, num total de 48 horas de trabalho, resultando em cerca de 10 páginas novas para o livro. Este foi o tópico que mais sofri para conseguir escrever, de todos os tempos.
+</P>
+<P>
+Desde o início tive dificuldades para simplificar o assunto, que é complexo e depende de um conhecimento prévio do leitor sobre o funcionamento de um servidor web.
+</P>
+<P>
+Agora que consegui terminar, enxergo claramente qual foi o meu erro.
+</P>
+<P>
+Em vez de focar somente no uso das expressões regulares, que é o objetivo destes tópicos adicionais do livro, eu também estava ensinando muito sobre o Apache em si. Com isso o texto ficou gigantesco e confuso, sem uma linha clara de raciocínio. A cada momento uma pausa precisava ser feita para explicar algo sobre o contexto, ou sobre peculiaridades do Apache, em especial, do <CODE>mod_rewrite</CODE>.
+</P>
+<P>
+Mesmo ontem, gastei 8h nesse mesmo caminho errado, passei o dia tentando remendar o que estava conceitualmente errado. A luz só veio quando parei para jantar, perto das nove da noite. Quando entendi que o problema era meu foco, decidi começar tudo de novo, mais uma vez.
+</P>
+<P>
+E de repente, tudo mudou.
+</P>
+<P>
+A frustração deu lugar à empolgação quando comecei a reescrever de maneira mais direta, assumindo que o leitor já conhece o Apache e sabe como usá-lo. A linha didática ficou clara e pude segui-la sem desvios. As expressões regulares puderam brilhar novamente, sem distrações.
+</P>
+<P>
+Foi um alívio finalmente terminar este tópico.
+</P>
+<P>
+Para quem quiser ir se adiantando, já coloquei no ar a referência dele, com links para a documentação das diretivas que usam regex: <A HREF="http://aurelio.net/regex/apache/">http://aurelio.net/regex/apache/</A>
+</P>
+<P>
+Agora posso passar para o próximo tópico, mas ainda não me decidi qual será :)
+</P>
+
+<H2>2012-08-30</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/526339130715381">https://www.facebook.com/ExpressoesRegulares/posts/526339130715381</A>
+</P>
+<P>
+Depois do sofrimento que foi conseguir terminar o tópico anterior sobre o Apache, o próximo foi bem mais tranquilo.
+</P>
+<P>
+A edição atual do livro já traz o tópico OpenOffice (que agora talvez deva mudar de nome para LibreOffice?), mas tratava apenas do editor de textos (Writer).
+</P>
+<P>
+Agora mergulhei nas planilhas, fiz uma looonga bateria de testes e aumentei o tópico em 4 páginas, cobrindo os detalhes sobre como usar as expressões regulares no OpenOffice/LibreOffice Calc. Deu um total de 12 horas de trabalho. Não foi rápido, mas também não foi sofrido :)
+</P>
+<P>
+A busca e substituição é tranquila, mas sofre dos mesmos probleminhas que o Writer já tem, nos metacaracteres. Desde 2009 eu leio que eles vão trocar o engine de regex e colocar um mais moderno (chamado ICU), mas até agora nada. Enquanto isso eu continuo fazendo minhas listas de itens com as pegadinhas, para você ler e não passar sufoco.
+</P>
+<P>
+Também dá pra usar as expressões na hora de fazer filtros, para deixar a tabela mais enxuta. Você casar ou negar uma regex.
+</P>
+<P>
+Mas a parte que mais gostei de testar e escrever foi sobre as fórmulas. Ao todo 19 (!!) funções trazem suporte às expressões regulares, fiquei surpreso. O uso é tranquilo, mas tem pegadinhas com casamentos parciais/completos é preciso ligar uma opção lá nas configurações para que funcione.
+</P>
+<P>
+Eu demorei MUITO tempo (1h) até conseguir achar quais eram os nomes em português das 19 funções. Procurei mas não achei uma tabela que trouxesse os nomes em pt/en para ver como era a tradução, aí tive que ficar trocando o idioma das fórmulas na configuração do LibreOffice, tirando screenshots para comparar as descrições, até encontrar todas as funções equivalentes. Coloquei no meu site esta tabela, para facilitar a vida de quem mais precisar disso: <A HREF="http://aurelio.net/regex/ooo/">http://aurelio.net/regex/ooo/</A>
+</P>
+<P>
+Eu sei que estamos no Brasil, falamos português, mas certas coisas, como nomes de comandos ou linguagens de programação, simplesmente NÃO SE TRADUZ. Acho bizarro fazer fórmulas em português, com <CODE>SOMASE</CODE>, <CODE>ÉCEL.VAZIA</CODE>, <CODE>CONT.SE</CODE>, <CODE>PROCV</CODE>... Mas como a maioria usa assim, fiz o tópico todo com os exemplos em português. Me bati muito para ficar toda hora traduzindo mentalmente pro inglês para poder "reconhecer" a função :)
+</P>
+<P>
+Dois exemplos simples, direto do livro novo:
+</P>
+
+<PRE>
+=SE(CONT.SE(A2; "^rua.*$"))
+=PROCV("^.*central.*$"; A2:B4; 2)
+</PRE>
+
+<H2>2012-09-01</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/179813758820036">https://www.facebook.com/ExpressoesRegulares/posts/179813758820036</A>
+</P>
+<P>
+Terminei mais um tópico! Foi o que eu mais gostei de fazer até agora: planilhas do Google Docs. Ou seria Google Drive? Enfim.
+</P>
+<P>
+Ao todo foram 17 horas de trabalho (pesquisa, testes e escrita) que renderam 7 páginas (!) novas para o livro, ficou bem completo.
+</P>
+<P>
+Eu já sou usuário das planilhas do Google há anos, até faço algumas fórmulas complicadinhas, mas até começar a escrever este tópico, eu não sabia que eles tinham criado três funções especiais para usar expressões regulares nas fórmulas: <CODE>REGEXMATCH</CODE>, <CODE>REGEXREPLACE</CODE> e <CODE>REGEXEXTRACT</CODE>.
+</P>
+<P>
+O OpenOffice Calc, meu tópico anterior, fez funções normais aceitarem regex por meio de uma opção na configuração. Já o Google criou três funções inteiramente novas, com objetivos específicos. Estudei e escrevi sobre ambos, e posso dizer que gostei bem mais da ideia do Google.
+</P>
+<P>
+Tem uma função pra casar, outra pra substituir e outra pra extrair textos. Elas cobrem as necessidades costumeiras de quem usa regex. Assim não mistura com as funções já existentes e o foco fica na expressão. É bem poderoso, fiz meus testes e fiquei bem satisfeito. Depois de terminar o livro vou turbinar algumas de minhas fórmulas com regex :)
+</P>
+<P>
+Também escrevi sobre os detalhes da busca (menu <CODE>Editar &gt; Localizar e substituir</CODE>), que no geral funciona bem. Só pena que não faz substituições dentro de fórmulas. Nessa o OpenOffice Calc ganhou.
+</P>
+<P>
+Decidi disponibilizar publicamente a planilha em que fiz todos os meus testes com as expressões, há muita informação importante concentrada ali, além de todos os exemplos que usei no texto. Acessa lá, copie para o seu Google Docs e brinque à vontade! O link está na página de referência do tópico, que também ganhou links bem informativos, para quem quiser já ir se adiantando e aprendendo por conta própria: <A HREF="http://aurelio.net/regex/googledocs/">http://aurelio.net/regex/googledocs/</A>
+</P>
+
+<H2>2012-09-03</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/361276073947398">https://www.facebook.com/ExpressoesRegulares/posts/361276073947398</A>
+</P>
+<P>
+Mais um tópico para a lista dos reescritos: JavaScript. Não estava nos meus planos reescrever este. Mas ontem fui mexer "só um pouquinho" nele, para adicionar umas novidades, e quando percebi, já estava com o telhado aberto e várias paredes derrubadas :)
+</P>
+<P>
+Na 3ª edição o JavaScript tinha duas páginas e meia, e agora com a reescrita saltou para 6 páginas! Foram 7 horas de trabalho no total, esse foi rápido.
+</P>
+<P>
+O que pegou é que no texto antigo eu havia misturado os métodos do objeto <CODE>RegExp</CODE> e do <CODE>String</CODE> num bolo só, ficou confuso. Agora expliquei de um jeito melhor, separando as coisas.
+</P>
+<P>
+Na verdade mudei toda a linha didática to texto, segui um outro caminho que me permitiu explicar tudo de maneira mais clara, além de possibilitar explicar assuntos mais complexos sem interrupções.
+</P>
+<P>
+Desde 2009, quando escrevi a edição anterior, trabalhei bastante no meu programa <A HREF="http://aurelio.net/moneylog/">Moneylog</A>, que é feito em JavaScript, e aprendi uns truques novos. Então melhorei bastante este tópico, com dicas mais práticas e avançadas.
+</P>
+<P>
+As novidades:
+</P>
+
+<UL>
+<LI>como lidar com strings multilinha (<CODE>/.../m</CODE>, casar <CODE>\n</CODE>)
+<LI>como usar uma função no replace: <CODE>replace("foo", minha_func)</CODE>
+<LI>explicação dos atributos no resultado do <CODE>match()</CODE>
+<LI>o que muda com casamento global no <CODE>match()</CODE>: <CODE>match(/.../g)</CODE>
+<LI>compor uma regex usando strings
+</UL>
+
+<P>
+Como de costume, vou colocar aqui o link para os autodidatas já irem se adiantando e aprendendo por conta própria: <A HREF="http://aurelio.net/regex/javascript/">http://aurelio.net/regex/javascript/</A>
+</P>
+
+<H2>2012-09-05</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/362045277203811">https://www.facebook.com/ExpressoesRegulares/posts/362045277203811</A>
+</P>
+<P>
+PARTE 1: Terminada!
+</P>
+<P>
+Acabei o trabalho de escrever conteúdo novo. Hora das estatísticas!
+</P>
+<P>
+Escrevi ao todo 6 tópicos inteiros para a nova edição, o que resultou em 42 páginas novas! É quase o tamanho de um livro magrinho :)
+</P>
+<P>
+<B>Foram 15 dias consecutivos de trabalho, sem pausa, totalizando 120h</B>. Teve dias que trabalhei 13 horas, outros foram apenas 5h, na média deu 8h/dia. Estou cansado, mas muito satisfeito com o resultado.
+</P>
+<P>
+Esta é a lista dos tópicos novos, com a quantidade de páginas (aproximada):
+</P>
+
+<TABLE ALIGN="center" BORDER="1">
+<TR>
+<TD>10p</TD>
+<TD>Apache HTTPd</TD>
+</TR>
+<TR>
+<TD ALIGN="right">4p</TD>
+<TD>OpenOffice Calc</TD>
+</TR>
+<TR>
+<TD ALIGN="right">7p</TD>
+<TD>Google Docs: Planilhas</TD>
+</TR>
+<TR>
+<TD ALIGN="right">5p</TD>
+<TD>find</TD>
+</TR>
+<TR>
+<TD>10p</TD>
+<TD>Python (reescrito)</TD>
+</TR>
+<TR>
+<TD ALIGN="right">6p</TD>
+<TD>JavaScript (reescrito)</TD>
+</TR>
+</TABLE>
+
+<P>
+Hoje fiz a revisão final destes textos, importei no OpenOffice e mandei para a editora. Agora eles encaminharão o texto para a revisora profissional fazer as correções de português. Depois este arquivo volta pra mim, e eu confiro cada uma das correções, aprovando ou descartando.
+</P>
+<P>
+A decisão final sobre a revisão é minha, pois como este é um livro técnico, e ainda por cima carregado de piadinhas e linguagem informal, um revisor muito conservador pode "matar" a personalidade descontraída do texto, ou acabar corrigindo algo da parte técnica. Tive más experiências com a revisão, principalmente na primeira versão deste livro (<A HREF="http://aurelio.net/regex/guia/">o guia rápido</A>), que a revisora me formalizou do começo ao fim :) Mas na última já foi bem tranquilo.
+</P>
+<P>
+Em paralelo a este processo, já estamos trabalhando na capa nova, que vai ser azul para completar as cores da bandeira. Ah, e claro, tem que tirar o acento do meu nome! <A HREF="http://aurelio.net/blog/2011/05/26/aos-33-descobri-que-meu-nome-nao-tem-acento/">http://aurelio.net/blog/2011/05/26/aos-33-descobri-que-meu-nome-nao-tem-acento/</A>
+</P>
+<P>
+Também já entrei desde anteontem na PARTE 2 do trabalho, que é arrumar e atualizar o conteúdo já existente. A última versão é de 2009, de lá pra cá as coisas mudaram. Por exemplo: o HTML5 já é mais suportado e o PHP aposentou as funções POSIX (<CODE>ereg*</CODE>).
+</P>
+<P>
+Meu livro aqui está todo rabiscado, tenho bastante alterações a fazer. Minha meta é terminar estas alterações até sexta-feira. Está apertado o prazo, estou na dúvida se vou conseguir. Mas vamos lá.
+</P>
+
+<H2>2012-09-06</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/362450043830001">https://www.facebook.com/ExpressoesRegulares/posts/362450043830001</A>
+</P>
+<P>
+PARTE 2: Terminada!
+</P>
+<P>
+Foram mais 21h de trabalho para marcar todas as alterações necessárias no conteúdo da edição anterior. Contei 135 alterações! Coisa pra caramba.
+</P>
+<P>
+Fora as pequenas alterações, tipo trocar uma palavra, melhorar uma frase, adicionar uma linha numa tabela e coisas assim, também tive que escrever textos mais substanciais em alguns tópicos:
+</P>
+<P>
+O tópico sobre HTML5 precisou de atualização sobre o estado atual dos navegadores, que melhorou bastante desde 2009! Agora dá pra usar tranquilo o atributo <CODE>pattern</CODE> no Google Chrome, Firefox e Opera. O Safari está quase lá e quem realmente está faltando é o IE.
+</P>
+<P>
+Os tópicos sobre o PHP precisaram de um esclarecimento, agora que o PCRE é oficial e o POSIX foi aposentado. Aproveitei para incentivar o leitor a se atualizar e converter suas funções pra PCRE assim que possível.
+</P>
+<P>
+O tópico sobre Shell Script estava com um erro grave: estava recomendando usar aspas ao redor das expressões, mas isso faz com que elas parem de funcionar. Aproveitei e além de esclarecer isso, fiz um exemplo usando a expressão dentro de uma variável, pra facilitar e evitar problemas de escape.
+</P>
+<P>
+Criei vários parágrafos para falar mais sobre o tópico Metacaracteres Modernosos -&gt; (?modificador), pois os <CODE>(?i)</CODE>, <CODE>(?m)</CODE> e amigos são muito úteis e merecem mais atenção.
+</P>
+<P>
+Agora pouco enviei para a editora todas estas alterações, e com isso terminei a parte mais pesada do trabalho da nova edição.
+</P>
+<P>
+Agora finalmente terei alguns dias de descanso, enquanto espero a editora devolver o PDF arrumado para eu conferir, o conteúdo novo revisado, e as propostas para a capa nova.
+</P>
+<P>
+Estou feliz que consegui adiantar o trabalho. Se tudo correr bem, quem sabe o piazinho4 já fique pronto ainda em setembro! Pode deixar que eu posto aqui as novidades.
+</P>
+
+<H2>2012-10-19</H2>
+
+<P>
+<A HREF="https://www.facebook.com/ExpressoesRegulares/posts/377872705621068">https://www.facebook.com/ExpressoesRegulares/posts/377872705621068</A>
+</P>
+<P>
+PIAZINHO 4 FINALIZADO!
+</P>
+<P>
+Hoje foram feitas as últimas correções na edição nova do livro, que agora está finalizada, fechada, lacrada, carimbada, selada, pronta para ir pra gráfica! \o/
+</P>
+<P>
+O lançamento oficial deve ocorrer no início de novembro. Eu aviso aqui quando tiver mais informações!
+</P>
+<P>
+No início de outubro a editora mandou a primeira versão do livro "montado" com os conteúdos novos que escrevi. Desde então, trocamos trocentos PDFs, pra lá e pra cá, refinando o conteúdo do livro até chegar no ponto de não ter mais o que arrumar.
+</P>
+<P>
+Funciona assim: a editora me manda o PDF com o conteúdo do livro, já diagramado e revisado. Eu confiro página por página, relendo o conteúdo, procurando errinhos, conferindo os exemplos, sugerindo melhorias. Faço anotações no PDF de tudo o que precisa ser arrumado e mando de volta para a editora. Eles fazem estas correções lá no fonte original deles (acho que é InDesing o nome do software), geram um PDF atualizado e me mandam. Aí começa tudo de novo: lá vou eu ver se todas as correções foram feitas, além de continuar a pescar mais errinhos.
+</P>
+<P>
+A capa também segue um processo parecido: a designer da editora criou a versão nova na cor azul e me mandou em PDF. Aí eu anoto no PDF o que quero que mude: cor e tamanho das letras, cores, posicionamento dos elementos, alinhamento, conteúdo dos textos, e vários pequeninos detalhes que ninguém percebe e somente alguém chato como eu se importa :)
+</P>
+<P>
+Este trabalho final de revisão é um processo cansativo e demorado. Dessa vez investi 23 horas ao todo, espalhadas em 18 dias corridos. Mas finalmente, hoje terminou. Dá um alívio enorme. Agora eu posso considerar que TERMINEI meu trabalho nesta edição nova.
+</P>
+<P>
+Claro que ainda tenho que atualizar o site do livro, cuidar do lançamento, avisar todo mundo (escrevendo textos como este)... Mas enfim, o trabalho pesado terminou. Comparando com o livro, o que falta agora é moleza :)
+</P>
+<P>
+Por falar em moleza, hoje é dia de ver o último capítulo da novela :P
+</P>
+<br><a href="../">« Voltar para a página principal desta edição</a>
+</div><!--main-->
+<div id="footer">
+Fale com o autor: <a href="http://twitter.com/oreio">@oreio</a>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-280222-9");
+pageTracker._trackPageview();
+</script>
+</DIV>
+
+<!-- html code generated by txt2tags 2.6.641 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags /Volumes/dados/Dropbox/a/livro/regex/web/ed4/diario.t2t -->
+</BODY></HTML>

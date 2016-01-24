@@ -1,0 +1,13 @@
+/* Cores 2a edicao */
+body {			background-color:#ddd; }
+a:hover, a:hover img {	background-color:#ddd; }
+#main h2 {			border-color:#ddd; }
+#main th {			border-color:#ddd; }
+#main .difftable td {	border-color:#ddd; }
+#footer, #footer a {	color:black; }
+
+/* Custom */
+#main .errata td {
+	vertical-align:top;
+	border-bottom:1px solid #ddd;
+}

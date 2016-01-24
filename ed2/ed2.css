@@ -1,0 +1,7 @@
+/* Cores 2a edicao */
+body {			background-color:yellow; }
+a:hover, a:hover img {	background-color:yellow; }
+#main h2 {			border-color:yellow; }
+#main th {			border-color:yellow; }
+#main .difftable td {	border-color:yellow; }
+#footer, #footer a {	color:black; }

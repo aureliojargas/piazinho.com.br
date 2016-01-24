@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link rel="icon" type="image/png" href="http://www.piazinho.com.br/favicon.png">
+	<title>Exemplos interativos do livro Expressões Regulares - 4ª edição</title>
+
+
+<style type="text/css">
+/* ---------------------------------------------- Reset CSS (from YUI) */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0;padding:0; }
+table { border-collapse:collapse;border-spacing:0; }
+body { font:12px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small; }
+select,input,button,textarea { font:99% arial,helvetica,clean,sans-serif; }
+table { font-size:inherit;font:100%; }
+th,td { border-style:none;padding:.5em; }
+p,blockquote,ul,ol,dl { margin:1em; }
+ol,ul,dl { margin-left:2em; }
+dl dd { margin-left:1em; }
+
+#er, #texto, #resultado, #exemplos a {
+	/* na fonte padrão (sans) os [ ] ficam estranhos, por isso tem que ser mono */
+	font-family:Monaco, "courier new", monospace;
+}
+
+body {
+	padding-bottom:1em; /* IE sux */
+}
+hr {
+	border:1px solid #aaa;
+	border-width:1px 0 0 0;
+}
+h2 {
+	text-align:center;
+	margin:1em;
+}
+h2 a {
+	color:black;
+}
+#nav {
+	text-align:center;
+	margin:2em 0 3em 0;
+	color:#444;
+}
+table#grid {
+	width:100%;
+	margin-top:4em;
+}
+table#grid td {
+	vertical-align:top;
+	padding:0 5%;
+}
+table#grid h3 {
+	color:#444;
+	font-weight:normal;
+	font-size:100%;
+}
+.arrow {
+	margin:1.2em 0 0.4em 0;
+/*	color:#ad4;*/
+/*	font-size:500%;*/
+}
+input, textarea {
+	width:100%;
+}
+
+#er { /* bgcolor set at js */
+	font-size:250%;
+	text-align:center;
+}
+#errata {
+	color:red;
+	width:70%;
+	margin-top:10px;
+}
+#resultado {
+	border:1px solid #eee;
+	padding:0 3px;
+	background:#eee;
+	color:#555;
+	white-space:pre-wrap; /* textarea-like */
+}
+#resultado .xxx {
+	background-color:#cf6;
+	border:1px solid #ad4;
+	color:black;
+}
+
+#exemplos {
+	font-size:90%;
+	line-height:140%;
+}
+#exemplos li {
+	display:inline;
+}
+#exemplos a {
+	font-family:monospace;
+	text-decoration:none;
+	white-space:nowrap;
+}
+#exemplos a:hover {
+	background-color:white;
+	background-color:#bbf;
+}
+
+#grupos, #exemplos {
+	display:none;
+}
+</style>
+
+<script type="text/javascript">
+
+/*jslint white: true, onevar: true, browser: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true */
+
+String.prototype.multi = function () {
+	return this.replace(/ /g, '\n');
+};
+
+var colorRegexNok = '#fcc';
+var colorRegexOk = '#cf6';
+var flipflopLabelShow = '[+] Mostrar a lista completa de exemplos';
+var flipflopLabelHide = '[-] Esconder a lista de exemplos';
+
+var ascii = '' +
+	' !"#$%&\'()*+,-./0123456789:;<=>?' + '\n' +
+	'@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_' + '\n' +
+	'`abcdefghijklmnopqrstuvwxyz{|}~¡' + '\n' +
+	'¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂ' + '\n' + // ¬ ­ ® removido o do meio, pois não aparece na tela
+	'ÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâ' + '\n' +
+	'ãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ';
+
+var lower = 'abcdefghijklmnopqrstuvwxyz';
+var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var number = '0123456789';
+var lowerbr = 'áéíóúàèìòùâêôãõúüçñ';
+var upperbr = 'ÁÉÍÓÚÀÈÌÒÙÂÊÔÃÕÚÜÇÑ';
+
+var alpha = upper + '\n' + lower;
+var alnum = alpha + '\n' + number;
+var alnumbr = alnum + '\n' + upperbr + '\n' + lowerbr;
+
+var dia = 'dia diafragma melodia radial bom-dia!'.multi();
+var mercado = 'supermercado hipermercado minimercado mercado'.multi();
+var boatarde = 'boa-tarde boa-noite boa-sorte bom-dia'.multi();
+var negrito = 'um <b>negrito<\/b> aqui.';
+var abbbb = 'abbbb';
+var rg = '1.234.567-8 1-234-567-8 12.34.56-7 12345678'.multi();
+var data = '31/12/1999';
+
+var textos = [ascii, alnum];
+
+// var errata_trema = 'Por engano, na revisão do texto para adequá-lo ao novo <a href="http://www.umportugues.com">Acordo Ortográfico<\/a>, foi retirado o trema dos “remendos” que casam caracteres acentuados. No livro, os intervalos À-u, à-u e À-U estão errados, o correto é À-ü, à-ü e À-Ü, todos com trema.';
+// . Estes intervalos são citados em outras páginas do livro, e também estão sem o trema. Esta errata se aplica às seguintes páginas: 99, 102, 107, 137, 169, 170, 201.
+
+var exemplos = [
+	// Capítulo, página, regex, texto, errormsg
+	[0, 0, '', ''],
+	[2, 28, 'fala.', 'Olha, com vocês me pressionando a fala não vai sair natural. Eu não consigo me concentrar na minha fala. Aliás, isso é um falatório, pois nunca vi um comercial com tantas falas assim. Vou me queixar com o problemasnafala@medicos.com.br'],
+	[2, 28, 'n.o', 'não nao O certo é não ou nao?'],
+	[2, 28, '.eclado', 'teclado Teclado'],
+	[2, 28, 'e.tendido', 'estendido extendido eztendido'],
+	[2, 29, '12.45', '12:45 12 45 12.45'],
+	[2, 29, '<.>', '<B> <i> <p>'],
+	[2, 29, '[aeiou]', 'abcdefghijklmnopqrstuvwxyz'],
+	[2, 29, 'n.o', 'não nao neo n-o n5o n o'],
+	[2, 30, 'n[ãa]o', 'não nao neo n-o n5o n o'],
+	[2, 30, '[Tt]eclado', 'teclado Teclado zeclado meclado'],
+	[2, 30, 'e[sx]tendido', 'estendido extendido eztendido entendido'],
+	[2, 30, '12[:. ]45', '12:45 12.45 12 45 12/45 12_45 12@45'],
+	[2, 30, '<[BIP]>', '<B> <I> <P> <U> <S>\n<b> <i> <p> <u> <s>'],
+	[2, 30, '<[BIPbip]>', '<B> <I> <P> <U> <S>\n<b> <i> <p> <u> <s>'],
+	[2, 31, '[0123456789]', 'A banda CPM 22 foi formada no ano de 1995.'],
+	[2, 31, '[0-9]', 'A banda CPM 22 foi formada no ano de 1995.'],
+	[2, 32, '[0-9][0-9]:[0-9][0-9]', '12:45 00:00 23:59 99:99 29:00'],
+	[2, 32, '[012][0-9]:[0-5][0-9]', '12:45 00:00 23:59 99:99 29:00'],
+	[2, 32, '[a-z]', 'A banda CPM 22 foi formada no ano de 1995.'],
+	[2, 32, '[A-Z]', 'A banda CPM 22 foi formada no ano de 1995.'],
+	[2, 32, '[5-9]', '0 1 2 3 4 5 6 7 8 9'],
+	[2, 32, '[a-f]', lower],
+	// [2, 32, '[:-@]', 'ainda não é hora de descobrir :)'],
+	[2, 33, '[A-Za-z0-9]', 'A banda CPM 22 foi formada no ano de 1995.'],
+	[2, 33, '[0-9-]', '0 1 2 3 4 5 6 7 8 9 -'],
+	[2, 33, '[\\]-]', '[ABC-1234]\n\nNota: No JavaScript, usado neste testador, é preciso escapar o colchete dentro da lista, por isso apareceu a contrabarra \\.'],
+	[2, 33, '[\\][-]', '[ABC-1234]\n\nNota: No JavaScript, usado neste testador, é preciso escapar o colchete dentro da lista, por isso apareceu a contrabarra \\.'],
+	[2, 34, '[:-@]', ascii],
+	[2, 34, '[A-z]', ascii],
+	[2, 34, '[A-Z]', ascii],
+	[2, 34, '[a-z]', ascii],
+	[2, 34, '[A-Za-z]', ascii],
+	[2, 34, '[A-Za-z0-9]', ascii],
+	[2, 34, '[[:upper:]]', 'Nota: No JavaScript, usado neste testador, não há suporte às classes POSIX, então não será possível demonstrá-las.'],
+	[2, 35, '[0-9]', ascii],
+	[2, 35, '[0-9A-Fa-f]', ascii],
+	[2, 35, '[.,!?:]', ascii],
+	[2, 38, '[0-9]', ascii],
+	[2, 38, '[^0-9]', ascii],
+	[2, 38, '[A-Z^]', ascii],
+	[2, 38, '[^A-Z^]', ascii],
+	[2, 38, '[:;,.!?][^ ]', 'Oi. Tudo Bem?Por aqui tudo.E aí?'],
+	[2, 39, 'ondas?', 'onda ondas ondass'],
+	[2, 41, 'fala[r!]?', 'falar fala! fala'],
+	[2, 41, '<\/?[BIPbip]>', '<\/B> <\/I> <\/P> <\/U> <\/S>\n<\/b> <\/i> <\/p> <\/u> <\/s>\n<B> <I> <P> <U> <S>\n<b> <i> <p> <u> <s>'],
+	[2, 42, '7*0', '0 70 770 7770 77777777777777777777777770'],
+	[2, 42, 'bi*p', 'bp bip biip biiip biiiip'],
+	[2, 42, 'b[ip]*', 'b bi bip biipp bpipipi biiiip bppp bpppiiipppiii bpippiipppiii'],
+	[2, 42, '<\/?[BIPbip] *>', '<\/B> <\/I> <\/P> <\/U> <\/S>\n<\/B > <\/I > <\/P > <\/U > <\/S >\n<\/B   > <\/I   > <\/P   > <\/U   > <\/S   >\n<\/b> <\/i> <\/p> <\/u> <\/s>\n<\/b > <\/i > <\/p > <\/u > <\/s >\n<B> <I> <P> <U> <S>\n<B > <I > <P > <U > <S >\n<b> <i> <p> <u> <s>\n<b > <i > <p > <u > <s >'],
+	[2, 42, '[ar]*a', 'arara'],
+	[2, 43, '.*', 'Pode digitar qualquer coisa aqui, que o curinga vai casar :)'],
+	[2, 43, 'relatório.*amanhã', 'Oi,\n\nTudo bem?\n\nPreciso do relatório de vendas pra amanhã.\n\nPode ser?\nAbraço.'],
+	[2, 43, '22/11/2001.*login', '21/11/2001 21:03:31 user admin login\n22/11/2001 10:45:29 user aurelio login\n21/11/2001 12:18:52 user admin logout\n22/11/2001 17:59:02 user aurelio logout\n23/11/2001 03:09:21 user admin login'],
+	[2, 44, '7+0', '0 70 770 7770 77777777777777777777777770'],
+	[2, 44, 'bi+p', 'bp bip biip biiip biiiip'],
+	[2, 44, 'b[ip]+', 'b bi bip biipp bpipipi biiiip bppp bpppiiipppiii bpippiipppiii'],
+	[2, 45, '7{1,4}', '7 77 777 7777'],
+	[2, 45, 'x{1,3}', 'xxxxxxxxxx'],
+	[2, 45, 'x{3,}', 'xxxxxxxxxx'],
+	[2, 45, 'x{0,3}', 'xxxxxxxxxx'],
+	[2, 45, 'x{3}', 'xxxxxxxxxx'],
+	[2, 45, 'x{1}', 'xxxxxxxxxx'],
+	[2, 45, 'x{0,1}', 'xxxxxxxxxx'],
+	[2, 45, 'x{0,}', 'xxxxxxxxxx'],
+	[2, 45, 'x{1,}', 'xxxxxxxxxx'],
+	[2, 47, '^[0-9]', alnum],
+	[2, 47, '^[^0-9]', alnum],
+	[2, 47, '[0-9]\\^', '1^2^3^4\n\nNota: No JavaScript, usado neste testador, é preciso escapar o circunflexo para torná-lo literal, mesmo que ele não esteja no início da linha.'],
+	[2, 47, '^\\^', '^abc\n\nNota: No JavaScript, usado neste testador, é preciso escapar o circunflexo para torná-lo literal, mesmo que ele não esteja no início da linha.'],
+	[2, 48, '[0-9]$', alnum],
+	// [2, 48, '^$', 'um\n\ndois'], // não há como testar aqui
+	[2, 49, '.....$', alnum],
+	[2, 49, '^.{20,60}$', alnum],
+	[2, 49, 'dia', dia],
+	[2, 49, '\\bdia', dia],
+	[2, 49, 'dia\\b', dia],
+	[2, 49, '\\bdia\\b', dia],
+	[2, 49, '[A-Za-z0-9_]+', dia],
+	[2, 51, 'lua[*]', 'lua*'],
+	[2, 51, 'lua\\*', 'lua*'],
+	[2, 52, '\\*', ascii],
+	[2, 52, '\\.', ascii],
+	[2, 52, '\\[', ascii],
+	[2, 52, '\\]', ascii],
+	[2, 52, '\\?', ascii],
+	[2, 52, '\\+', ascii],
+	[2, 52, '\\{', ascii],
+	[2, 52, '\\}', ascii],
+	[2, 52, '\\^', ascii],
+	[2, 52, '\\$', ascii],
+	[2, 52, '\\\\', ascii],
+	[2, 52, '[0-9]\\.[0-9]{3}\\.[0-9]{3}-[0-9]', rg],
+	[2, 53, 'boa-tarde|boa-noite', boatarde],
+	[2, 53, '[gpr]ato', 'fato gato jato mato nato pato rato tato'.multi()],
+	[2, 53, 'gato|pato|rato', 'fato gato jato mato nato pato rato tato'.multi()],
+	[2, 53, 'http://|ftp://', 'http://aurelio.net ftp://ftp.example.com'.multi()],
+	[2, 54, '(ai)+', 'ai aiai aiaiai aiaiaiai'],
+	[2, 54, '(ha!)+', 'ha! ha!ha! ha!ha!ha! ha!ha!ha!ha!'],
+	[2, 54, '(\\.[0-9]){3}', '.0.6.2 .2.8.9 .7.7.7 1.2.3'],
+	[2, 54, '(www\\.)?zz\\.com', 'www.zz.com zz.com'.multi()],
+	[2, 54, 'boa-(tarde|noite)',  boatarde],
+	[2, 54, '(#|n\\.|núm) 7', ['# 7', 'n. 7', 'núm 7']],
+	[2, 54, '(in|con)?certo', 'incerto concerto certo'.multi()],
+	[2, 54, '(super|hiper)mercado', mercado],
+	[2, 54, '(su|hi)permercado', mercado],
+	[2, 55, '((su|hi)per)?mercado', mercado],
+	[2, 55, '(mini|(su|hi)per)?mercado', mercado],
+	[2, 55, '\\(', ascii],
+	[2, 55, '\\)', ascii],
+	[2, 55, '[A-Za-z0-9_]+\\(\\)', 'somatudo() soma_tudo() soma_tudo(x,y) soma_tudo'.multi()],
+	[2, 57, '(quero)-\\1', 'quero-quero quero-mais quero-bis'.multi()],
+	[2, 57, '([A-Za-z]+)-\\1', 'quero-quero bate-bate come-come bate-pronto come-dorme'.multi()],
+	[2, 58, '([A-Za-z]+)-?\\1', 'quero-quero bate-bate come-come bate-pronto come-dorme bombom lili dudu bibi'.multi()],
+	[2, 58, '([A-Za-z]+) \\1', 'Palavras repetidas como como estas, porém, algo pela metade deve ser ignorado.'],
+	[2, 58, '\\b([A-Za-z]+) \\1\\b', 'Palavras repetidas como como estas, porém, algo pela metade deve ser ignorado.'],
+	[2, 58, '(lenta)(mente) é \\2 \\1', 'lentamente é mente lenta'],
+	[2, 58, '((band)eira)nte \\1 \\2a', 'bandeirante bandeira banda'],
+	[2, 58, 'in(d)ol(or) é sem \\1\\2', 'indolor é sem dor'],
+	[2, 58, '((((a)b)c)d)-1 = \\1,\\2,\\3,\\4', 'abcd-1 = abcd,abc,ab,a'],
+	[2, 59, '([0-9])\\1', '66 69'],
+	[3, 62, '<.*>', negrito],
+	[3, 63, '<', negrito],
+	[3, 63, '<.*', negrito],
+	[3, 64, '<.*>', negrito],
+	[3, 65, '<.*?>', negrito],
+	[3, 66, 'ab*', abbbb],
+	[3, 66, 'ab*?', abbbb],
+	[3, 66, 'ab+', abbbb],
+	[3, 66, 'ab+?', abbbb],
+	[3, 66, 'ab?', abbbb],
+	[3, 66, 'ab??', abbbb],
+	[3, 66, 'ab{1,3}', abbbb],
+	[3, 66, 'ab{1,3}?', abbbb],
+	[3, 68, '\\d', ascii],
+	[3, 68, '\\D', ascii],
+	[3, 68, '\\w', ascii],
+	[3, 68, '\\W', ascii],
+	[3, 68, '\\s', ascii],
+	[3, 68, '\\S', ascii],
+	[3, 68, '[0-9]\\.[0-9]{3}\\.[0-9]{3}-[0-9]', rg],
+	[3, 68, '\\d\\.\\d{3}\\.\\d{3}-\\d', rg],
+	// [3, 71, '(?#comentário)[a-z]', ascii], // no js support
+	[3, 71, '^(Homer) (?:J\\.) (Simpson)', 'Homer J. Simpson'],
+	[3, 72, 'Homer (?=Simpson)', ['Homer Simpson', 'Homer Ramone']],
+	[3, 72, 'Homer (?!morreu)', ['Homer comeu', 'Homer morreu']],
+	// [3, 72, '(?<!Barney) Simpson', ['Homer Simpson', 'Barney Simpson']], // no js support
+	// [3, 72, '(?i)[a-z]', alnum], // no js support
+	[4, 78, '[0-9]\\.[0-9]{3}\\.[0-9]{3}-[0-9]', rg],
+	[4, 78, '[0-9](\\.[0-9]{3}){2}-[0-9]', rg],
+	[4, 78, '(mini|(su|hi)per)?mercado', mercado],
+	[4, 78, '(mini|super|hiper)?mercado', mercado],
+	[4, 79, '^R\\$', 'R$ 200,00 : fósforos e velas\n  essenciais na crise de energia.\n  comprados das marcas mais baratas.\nR$ 100,00 : caixas de ovos vazias'],
+	[4, 80, '[^:]', ascii],
+	[4, 80, '[A-Za-z0-9,.()%!]', ascii],
+	[4, 81, '^.*\\.', 'Primeira frase. Segunda frase. Terceira frase.'],
+	[4, 81, '^[^.]*\\.', 'Primeira frase. Segunda frase. Terceira frase.'],
+	[4, 81, '^[A-Za-z ,]*\\.', 'Primeira frase. Segunda frase. Terceira frase.'],
+	[4, 81, '<.*>', negrito],
+	[4, 81, '<[^>]*>', negrito],
+	// 83
+	// 84
+	[5, 85, 'jipe 4[xX]4', ['jipe 4x4', 'jipe 4X4', 'Jipe 4x4', 'JIPE 4X4']],
+	[5, 86, '[Pp][Rr][Oo][Bb][Ll][Ee][Mm][Aa]', 'problema Problema PROBLEMA PRObleMA PrObLeMa pROBLEMA'.multi()],
+	// [5, 99-ed3, '^[^a][^q][^u][^i]', 'aqui aonde agora assim'.multi()],
+	// [5, 99-ed3, '^([^a]|a[^q]|aq[^u]|aqu[^i]|aqui[a-zà-ü])', 'aqui aonde agora assim'.multi() + '\no aqui é proibido.'],
+	// [5, 99-ed3, '^(?!aqui).*', 'aqui aonde agora assim'.multi() + '\no aqui é proibido.'],
+	[5, 88, '[À-Ü]', ascii],
+	[5, 88, '[à-ü]', ascii],
+	[5, 88, '[À-ü]', ascii],
+	[5, 88, '[a-zà-ü]', ascii],
+	[5, 88, '[A-ZÀ-Ü]', ascii],
+	[5, 88, '[A-Za-zÀ-ü]', ascii],
+	[5, 88, '[A-Za-zÀ-ü0-9]', ascii],
+	// Editores:
+	// [6, 106, '[A-Z]+', ascii],
+	// [6, 107, '(\\d\\d)/(\\d\\d)/(\\d{4})', data],
+	// [6, 107, '\\w+', ascii],
+	// [6, 107, '[A-Za-zÀ-ü]+', ascii],
+	// [6, 107, '(\\d\\d)-\\1', '86-86 12-12 88-99'],
+	// [6, 112, '[a-z]+', ascii],
+	// [6, 113, '(..)/(..)/(....)', data],
+	// // [6, 113, '\\x0041', ascii], // don't work
+	// [6, 114, '([0-9]+)-\\1', '86-86 123-123 88-99'],
+	// Programação:
+	[8, 143, '^(..)/(..)/(....)$', '31/12/1999'],
+	[8, 145, '(..):(..)', '12:34'],
+	[8, 145, '(\\d\\d)/(\\d\\d)/(\\d\\d\\d\\d)', 'Hoje é dia 31/12/1999.'],
+	[8, 146, '\\w', 'Jáva'],
+	[8, 146, '[\\wÀ-ü]', 'Jáva']
+	// ['B', 218, 'Tabela ASCII pra você brincar :)', ascii]
+];
+
+String.prototype.fix_newline = function () {
+	return this.replace(/\r\n/g, '\n');
+};
+String.prototype.HTMLescape = function () {
+	return this.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;').replace(/>/g, '&gt;');
+};
+
+function casar() {
+	var i, er, texto, casamento, num_casamentos, grupos_html;
+
+	// get
+	er = document.getElementById('er').value;
+	texto = document.getElementById('texto').value.fix_newline();
+
+	// match
+	try {
+		er = new RegExp(er, 'gm'); // global, multiline
+		document.getElementById('er').style.backgroundColor = colorRegexOk;
+		casamento = er.exec(texto);
+		if (casamento) {
+			texto = texto.replace(er, '\a1$&\a2');
+			num_casamentos = (texto.split(/\a1/g).length - 1);
+		}
+	} catch (e) {
+		document.getElementById('er').style.backgroundColor = colorRegexNok;
+	}
+
+	// escape
+	texto = texto.HTMLescape();
+
+	// highlight
+	texto = texto.replace(/\a1/g, '<span class="xxx">');
+	texto = texto.replace(/\a2/g, '<\/span>');
+
+	// show
+	document.getElementById('resultado').innerHTML = texto || '-vazio-';
+
+	// Só mostra conteúdo dos grupos se casou somente uma vez, pra não confundir.
+	if (casamento && num_casamentos === 1 && casamento.length > 1) {
+		grupos_html = '<ol>';
+		for (i = 1; i < casamento.length; i++) {
+			if (casamento[i] !== undefined) {
+				grupos_html += '<li>' + casamento[i] + '<\/li>';
+			}
+		}
+		grupos_html += '<\/ol>';
+		document.getElementById('gruposlista').innerHTML = grupos_html;
+		document.getElementById('grupos').style.display = 'block';
+	} else {
+		document.getElementById('gruposlista').innerHTML = '';
+		document.getElementById('grupos').style.display = 'none';
+	}
+}
+
+function carregar(er, texto) {
+	document.getElementById('er').value = er;
+	document.getElementById('texto').value = texto;
+	casar();
+}
+function carregar_exemplo(i) {
+	var texto, proximo, anterior, max, errata;
+
+	window.location.hash = '#' + i;
+
+	texto = exemplos[i][3];
+
+	if (exemplos[i].length === 5) {
+		errata = 'ERRATA: ' + exemplos[i][4];
+	}
+
+	if (typeof texto !== 'string') {
+		texto = texto.join('\n'); // array2string, multiline
+	}
+
+	document.getElementById('er').value = exemplos[i][2];
+	document.getElementById('errata').innerHTML = errata || '';
+	document.getElementById('texto').value = texto;
+	document.getElementById('num_pagina').innerHTML = exemplos[i][1];
+
+	anterior = i - 1;
+	proximo = i + 1;
+	max = exemplos.length;
+
+	if (anterior === 0) {
+		anterior = max - 1;
+	}
+	if (proximo === max) {
+		proximo = 1;
+	}
+
+
+	document.getElementById('anterior').href = 'javascript:carregar_exemplo('+ anterior + ')';
+	document.getElementById('proximo').href = 'javascript:carregar_exemplo('+ proximo + ')';
+
+	// // mostrar nome (er) dos exemplos
+	// document.getElementById('anterior').innerHTML = exemplos[i - 1][2].HTMLescape();
+	// document.getElementById('proximo').innerHTML = exemplos[i + 1][2].HTMLescape();
+
+	casar();
+}
+function carregar_texto(i) {
+	document.getElementById('texto').value = textos[i];
+	casar();
+}
+
+function gera_exemplos() {
+	var i, html, capitulo_ant, pagina_ant, capitulo, pagina;
+
+	// init
+	capitulo_ant = pagina_ant = capitulo = pagina = 0;
+
+	// compose
+	html = ['<ul>'];
+	for (i = 0; i < exemplos.length; i++) {
+		capitulo = exemplos[i][0];
+		pagina = exemplos[i][1];
+
+		if (capitulo !== capitulo_ant || pagina !== pagina_ant) {
+			html.push('<li>Página&nbsp;' + pagina + ': ');
+			capitulo_ant = capitulo;
+			pagina_ant = pagina;
+		}
+
+		html.push('<a href="javascript:carregar_exemplo(' + i + ')">' +
+			exemplos[i][2].HTMLescape() +
+			'<\/a>&nbsp;&nbsp;&bull;&nbsp; ');
+	}
+	html.push('Fim.');
+	html.push('<\/ul>');
+
+	// show
+	document.getElementById('exemplos').innerHTML = html.join('\n');
+}
+
+function mostra_exemplos() {
+	var container, label;
+	container = document.getElementById('exemplos');
+	label = document.getElementById('flipflop');
+	if (container.style.display === 'block') {
+		container.style.display = 'none';
+		label.innerHTML = flipflopLabelShow;
+	} else {
+		container.style.display = 'block';
+		label.innerHTML = flipflopLabelHide;
+	}
+	return false;
+}
+
+function init() {
+	var n;
+
+	// #number at URL?
+	if (window.location.hash) {
+		n = parseInt(window.location.hash.replace(/[^0-9]/g, ''), 10);
+	} else {
+		n = 1;
+	}
+
+	carregar_exemplo(n);
+	document.getElementById('flipflop').onclick = mostra_exemplos;
+	document.getElementById('flipflop').innerHTML = flipflopLabelShow;
+	gera_exemplos(); // delayed, since it's hidden
+
+}
+
+window.onload = init;
+</script>
+
+</head>
+<body>
+
+<noscript><h1 style="color:red;">Liga o JavaScript!</h1></noscript>
+
+<h2>Exemplos interativos do livro <a href="http://www.piazinho.com.br">Expressões Regulares - 4ª edição</a></h2>
+
+<table id="grid">
+<tr>
+	<td colspan="2" align="center">
+		<input type="text" name="er" id="er" onkeyup="casar();" style="width:80%;">
+		<div id="errata"> </div>
+	</td>
+</tr>
+<tr>
+	<td>
+		<!-- <div class="arrow" style="text-align:right;">⇗</div> -->
+		<div class="arrow" style="text-align:right;"><img src="../img/arrow-ne.png"></div>
+
+		<h3 style="text-align:left;">Texto original</h3>
+		<textarea type="text" name="texto" id="texto" rows="7" onkeyup="casar();"> </textarea>
+		<!-- <br> -->
+		<!-- <a href="javascript:carregar_texto(0)">tabela ascii</a>, -->
+		<!-- <a href="javascript:carregar_texto(1)">alnum</a> -->
+	</td>
+	<td width="50%">
+		<!-- <div class="arrow">⇘</div> -->
+		<div class="arrow"><img src="../img/arrow-se.png"></div>
+
+		<h3 style="text-align:right;">Resultado</h3>
+		<div id="resultado"> </div>
+
+		<div id="grupos">
+			<p><b>Grupos:</b></p>
+			<div id="gruposlista"> </div>
+		</div>
+	</td>
+</tr>
+</table>
+
+<div id="nav">
+	<a id="anterior">« Anterior</a>
+	| Este exemplo está na <b>página <span id="num_pagina">0</span></b> do livro |
+	<a id="proximo">Próximo »</a>
+</div>
+
+<hr>
+<p><a id="flipflop" href="#"></a></p>
+<div id="exemplos"> </div>
+
+<hr>
+
+<p><a href="http://www.piazinho.com.br">« Voltar para o site do livro</a></p>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-280222-9");
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>
+
+<!--
+TODO:
+* load regex: metas ([todos-metas-aqui-dentro])
+* exemplos da contracapa
+-->

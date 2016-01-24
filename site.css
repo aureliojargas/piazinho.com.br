@@ -1,0 +1,205 @@
+/* ---------------------------------------------- Reset CSS (from YUI) */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0;padding:0; }
+table { border-collapse:collapse;border-spacing:0; }
+body { font:12px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small; }
+select,input,button,textarea { font:99% arial,helvetica,clean,sans-serif; }
+table { font-size:inherit;font:100%; }
+th,td { border-style:none;padding:.5em; }
+blockquote,ul,ol,dl { margin:1em; }
+ol,ul,dl { margin-left:1em; }
+dl dd { margin-left:2em; }
+dl dt { margin:1em 0; }
+p { margin:1em 0;}
+/* ------------------------------------------------------------------- */
+
+body {
+	padding:30px;
+	font-size:100%;
+	line-height:140%;
+/*	border:1px solid #888;*/
+}
+#header {
+	display:none;
+}
+#faixa {
+	position:absolute;
+	top:0;
+	right:0;
+}
+#topbanner a {
+	text-decoration: none;
+}
+#topbanner a:hover,
+#topbanner a:hover h1 {
+	text-decoration: underline;
+}
+#topbanner img,
+#topbanner h1 {
+	display: inline-block;
+	vertical-align: middle;	
+}
+#topbanner h1 {
+	font-size: 200% !important;
+	line-height: 125%;
+}
+#main {
+	background:white;
+	padding:30px;
+/*	border:1px solid #888;*/
+}
+#main h1 {
+	font-size:150%;
+	padding:30px 30px 15px 0;
+}
+#main h2 {
+/*	clear:both;*/
+	border-top:30px solid black;
+	margin:30px -30px;
+	padding:30px 0 0 30px;
+/*	height:132px;*/
+/*	background:transparent url(piazinho-joia.jpg) no-repeat right;*/
+
+}
+#main h3 { /* testemunhos */
+	margin:1.5em 0 1em 0;
+	padding:1.5em 0 0 0;
+	border-top:1px solid #ccc;
+}
+#main img.piazinho {
+	float:right;
+	border:1px solid red;
+	vertical-align:bottom;
+}
+#main table {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+#main th {
+	text-align:left;
+	border-bottom:3px solid black;
+}
+#main td,
+#main th {
+	padding:5px 15px 5px 15px;
+}
+#main ul {
+/*	list-style-position:inside;*/
+	list-style-type:square;
+}
+#main ul li {
+	padding:0.3em 0;
+}
+#main ul li i {
+	color:#444;
+	font-size:85%;
+}
+#main ul ul {
+	margin:0 0 0 2em;
+}
+#main ul ul li {
+	padding:0;
+}
+#main dt {
+	font-weight:bold;
+}
+#main dd ul li {
+	padding:0;
+}
+#main code,
+#main pre {
+	font-size: 125%;
+}
+
+#footer {
+	float:right;
+	font-size:85%;
+}
+
+/* Share */
+.aa-share {
+	float:right;
+	margin-bottom:30px;
+}
+
+/* Aviso */
+.aviso {
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:9;
+}
+.aviso p {
+	background-color:#fcc;
+	border:1px solid red;
+	padding:15px 15px;
+	margin:0;
+}
+
+/* tabela comparativa */
+#main .difftable tr:hover td {
+/*	background:black;*/
+}
+#main .difftable td {
+	vertical-align:top;
+	border:1px solid black;
+	border-width:1px 0;
+	padding-top:5px;
+	padding-bottom:5px;
+	font-size:85%;
+}
+#main .difftable td i {
+	font-style:normal;
+}
+#main .difftable th {
+	vertical-align:bottom; /* capinha1.jpg */
+}
+
+
+/*Testemunhos*/
+#main .testemunho dt {
+	margin-bottom:0;
+	font-weight:normal;
+}
+#main .testemunho dd {
+	color:#888;
+	font-style:italic;
+	font-size:85%;
+	margin-left:3em;
+}
+#main .testemunho dd a {
+	color:#888;
+}
+
+/* Custom */
+/*body.index #header,
+body.opiniao #header {
+	display:none;
+}
+*/
+body.index .toc ul {
+	list-style-type: none !important;
+	margin-left: 0 !important;
+}
+body.index .aa-share {
+	float:none;
+	margin-top:30px;
+}
+table#primeira {
+	margin-top:0;
+}
+#local table {
+	border-style:solid;
+}
+#local th {
+/*	background-color:#BBD424;*/
+/*	padding:15px 0 15px 5px;*/
+}
+#local td {
+	vertical-align:top;
+}
+.imglinkbordered img {
+	border: 7px solid black;
+}
+.imglinkbordered img:hover {
+	border-color: red;
+}
