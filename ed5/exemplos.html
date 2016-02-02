@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link rel="icon" type="image/png" href="http://www.piazinho.com.br/favicon.png">
-	<title>Exemplos interativos do livro Expressões Regulares - 4ª edição</title>
+	<title>Exemplos interativos do livro Expressões Regulares - 5ª edição</title>
 
 
 <style type="text/css">
@@ -247,7 +247,7 @@ var exemplos = [
 	[2, 52, '\\$', ascii],
 	[2, 52, '\\\\', ascii],
 	[2, 52, '[0-9]\\.[0-9]{3}\\.[0-9]{3}-[0-9]', rg],
-	[2, 53, 'boa-tarde|boa-noite', boatarde],
+	[2, 52, 'boa-tarde|boa-noite', boatarde],
 	[2, 53, '[gpr]ato', 'fato gato jato mato nato pato rato tato'.multi()],
 	[2, 53, 'gato|pato|rato', 'fato gato jato mato nato pato rato tato'.multi()],
 	[2, 53, 'http://|ftp://', 'http://aurelio.net ftp://ftp.example.com'.multi()],
@@ -339,11 +339,11 @@ var exemplos = [
 	// // [6, 113, '\\x0041', ascii], // don't work
 	// [6, 114, '([0-9]+)-\\1', '86-86 123-123 88-99'],
 	// Programação:
-	[8, 143, '^(..)/(..)/(....)$', '31/12/1999'],
-	[8, 145, '(..):(..)', '12:34'],
-	[8, 145, '(\\d\\d)/(\\d\\d)/(\\d\\d\\d\\d)', 'Hoje é dia 31/12/1999.'],
-	[8, 146, '\\w', 'Jáva'],
-	[8, 146, '[\\wÀ-ü]', 'Jáva']
+	[8, 153, '^(..)/(..)/(....)$', '31/12/1999'],
+	[8, 155, '(..):(..)', '12:34'],
+	[8, 155, '(\\d\\d)/(\\d\\d)/(\\d\\d\\d\\d)', 'Hoje é dia 31/12/1999.'],
+	[8, 156, '\\w', 'Jáva'],
+	[8, 156, '[\\wÀ-ü]', 'Jáva']
 	// ['B', 218, 'Tabela ASCII pra você brincar :)', ascii]
 ];
 
@@ -520,7 +520,7 @@ window.onload = init;
 
 <noscript><h1 style="color:red;">Liga o JavaScript!</h1></noscript>
 
-<h2>Exemplos interativos do livro <a href="http://www.piazinho.com.br">Expressões Regulares - 4ª edição</a></h2>
+<h2>Exemplos interativos do livro <a href="http://www.piazinho.com.br">Expressões Regulares - 5ª edição</a></h2>
 
 <table id="grid">
 <tr>
