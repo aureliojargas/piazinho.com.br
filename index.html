@@ -157,15 +157,17 @@
                         <b>Lançamento:</b>
                     </td>
                     <td>
-                        ? de fevereiro de 2016
+                        15 de fevereiro de 2016
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="vertical-align: top">
                         <b>Preço:</b>
                     </td>
                     <td>
-                        R$ 59,00 (<a href="#comprar">onde comprar</a>)
+                        R$ 59,00 (impresso)<br>
+                        R$ 47,20 (e-book)<br>
+                        <a href="#comprar">onde comprar</a>
                     </td>
                 </tr>
                 <tr>
@@ -194,7 +196,7 @@
                 Em uma abordagem incomum de encontrar em livros técnicos, as explicações didáticas e divertidas tornam prazerosa a leitura de um tema tão árido e abstrato. É uma conversa entre amigos, partindo do básico até chegar aos conceitos avançados. Esta obra revela aos poucos o poder das expressões e o leitor irá saborear o assunto descobrindo seus segredos descontraidamente.
             </p>
             <p>
-                XXX Esta <b>5ª edição</b>, além de correções e atualizações, traz tópicos novos que ensinam como utilizar as expressões regulares nas <b>fórmulas das planilhas</b> do Google Docs e OpenOffice/LibreOffice, no servidor web <b>Apache</b> (e seu temido mod_rewrite), e no comando <b>find</b> do UNIX. Foram reescritos os tópicos sobre as linguagens de programação <b>JavaScript</b> e <b>Python</b>, agora trazendo uma referência completa, recheada de exemplos, tratando inclusive de assuntos avançados como substituição usando funções e grupos nomeados.
+                Esta <b>5ª edição</b>, além de correções e atualizações, traz tópicos novos que ensinam como utilizar as expressões regulares em duas ferramentas importantes para usuários de Windows: o enxuto editor de textos <b>Notepad++</b>, e a poderosa shell <b>PowerShell</b>, sendo que esta ganhou um guia completo, bem detalhado, com 12 páginas recheadas de exemplos. Já usuários de sistemas Unix vão gostar do novo tópico sobre o servidor web <b>Nginx</b>, que explica como usar as expressões em suas diretivas de configuração.
             </p>
             <p>
                 Saiba mais em www.piazinho.com.br.
@@ -236,59 +238,40 @@
             <!-- #################################################################### -->
 
             <h2 id="novo">
-                Novidades da 5ª edição XXX
+                Novidades da 5ª edição
             </h2>
 
             <dl>
                 <dt>
-                    <b>Planilhas do Google Docs <span style="color:green;">(novo)</span></b>
+                    <b>Nginx <span style="color:green;">(novo)</span></b>
                 </dt>
                 <dd>
-                    Você já deve conhecer as planilhas do Google Docs (agora chamado de Google Drive). Mas você sabia que pode usar expressões regulares para fazer pesquisas e substituições no conteúdo das células? É muito prático, o livro te ensinará os detalhes. Melhor ainda, você também aprenderá como turbinar suas fórmulas com as três funções novas que o Google criou especificamente para usar com as expressões: REGEXMATCH, REGEXREPLACE e REGEXEXTRACT.
+                    O Nginx é um servidor web rápido e eficiente, uma alternativa popular ao Apache que já se tornou o terceiro mais usado no mundo.
+                    Vai utilizá-lo? Então é importante saber bem os vários detalhes sobre a aplicação das expressões nele, pois ao todo <a href="http://aurelio.net/regex/nginx/">13 diretivas de configuração do Nginx usam expressões regulares</a>.
+                    Neste tópico novo do livro, tudo é explicado de maneira didática, para que você possa aprender e já aplicar em seus sites. Há diversos exemplos de uso das diretivas <code>location</code>, <code>if</code> e <code>rewrite</code>, além de explicações sobre grupos nomeados, expressões negadas, uso de aspas, redirecionamento, casamento parcial e outros detalhes preciosos.
                 </dd>
                 <dt>
-                    <b>Planilhas do OpenOffice/LibreOffice <span style="color:green;">(novo)</span></b>
+                    <b>PowerShell <span style="color:green;">(novo)</span></b>
                 </dt>
                 <dd>
-                    Você aprenderá como usar as expressões regulares no Calc, em todos os lugares onde elas são aceitas: no painel Localizar e substituir, nos filtros e em várias funções usadas em fórmulas. São ao todo 19 funções que suportam as expressões, entre elas SUMIF, COUNTIF, MATCH e LOOKUP.
+                    Minha especialidade é a <a href="http://aurelio.net/shell/">shell do Unix</a>, mas sabe que eu gostei de ter estudado e experimentado a PowerShell do Windows?
+                    Muito diferente do antigo MS-DOS, traz ideias do Unix, mistura com objetos e suporta expressões regulares diretamente via operadores como <code>-Match</code>, <code>-Replace</code> e <code>-Split</code>.
+                    O motor por baixo de tudo é a plataforma .NET, então o suporte às expressões é bem completo e poderoso.
+                    Acabei me empolgando e fazendo um guia completo, bem detalhado, com 12 páginas (versão impressa) recheadas de exemplos e explicações didáticas sobre como casar, extrair, substituir e dividir textos na linha de comando do PowerShell.
                 </dd>
                 <dt>
-                    <b>Servidor web Apache <span style="color:green;">(novo)</span></b>
+                    <b>Notepad++ <span style="color:green;">(novo)</span></b>
                 </dt>
                 <dd>
-                    Já teve pesadelos com o temido mod_rewrite? Eu também. Aprenda a fazer expressões certeiras, evitando pegadinhas com PATH e retrovisores. Mas este módulo é apenas um pedaço de um total de 28 diretivas (!) do Apache que suportam expressões regulares, entre elas: If, RedirectMatch, FilesMatch, LocationMatch e a inusitada Substitute, que "faz um sed" no conteúdo das páginas do servidor. São ao todo 10 páginas do livro dedicadas a desvendar os segredos das expressões no Apache, didaticamente.
+                    O Notepad++ é um editor de textos poderoso, popular entre programadores e usuários avançados no Windows.
+                    Usando PCRE, ele traz um suporte completo às expressões, com as tradicionais ferramentas de busca e substituição, além de poder destacar textos (tipo um <a href="http://www.regexpal.com/">RegexPal</a> embutido).
+                    Este tópico ensina como utilizar as expressões no editor, e explica vários detalhes importantes como acentuação, maiúsculas/minúsculas, caracteres especiais, opções, retrovisores, escapes, entre outros. Tem também uma explicação sobre o metacaractere exótico <code>[=x=]</code>, usado para resolver problemas com acentação.
                 </dd>
                 <dt>
-                    <b>Comando find - UNIX <span style="color:green;">(novo)</span></b>
+                    <b>FINALMENTE: Versão digital (e-book)</b>
                 </dt>
                 <dd>
-                    Use expressões regulares no comando find para encontrar rapidamente arquivos e pastas pelo nome. Mas não ache que será fácil! Além de algumas pegadinhas com a ordem das opções, e diferenças entre as versões GNU e BSD, existem sete (!) tipos de expressões regulares para você escolher. Para que simplificar, não é mesmo? :)
-                </dd>
-                <dt>
-                    <b>Python <span style="color:green;">(reescrito)</span></b>
-                </dt>
-                <dd>
-                    Python é minha linguagem preferida e agora ela teve o destaque que merece no livro: este tópico foi reescrito e pulou de 2.5 para 9 páginas. Agora é uma referência completa, recheada de exemplos, tratando inclusive de assuntos avançados como flags, textos multilinha, grupos nomeados, expressões comentadas e substituição usando função. É como um minilivro dentro do livro.
-                </dd>
-                <dt>
-                    <b>JavaScript <span style="color:green;">(reescrito)</span></b>
-                </dt>
-                <dd>
-                    JavaScript disputa com <a href="http://www.shellscript.com.br">Shell Script</a> o segundo lugar entre minhas linguagens preferidas, então também dei-lhe um tratamento especial nesta edição. O tópico foi reescrito e expandido, agora explicando em detalhes como usar o objeto RegExp e extrair dados do casamento. Também há exemplos didáticos para tópicos avançados como: textos multilinha e substituição usando função.
-                </dd>
-                <dt>
-                    <b>Editor de textos do Google Docs <span style="color:red;">(removido)</span></b>
-                </dt>
-                <dd>
-                    Em 2010 o editor de textos do Google foi reformulado e infelizmente o suporte às expressões regulares foi removido.
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <b>10 anos de Expressões Regulares <span style="color:red;">(removido)</span></b>
-                </dt>
-                <dd>
-                    A edição anterior era comemorativa e trazia um texto longo (13 páginas) que contava minha história de uma década com as expressões e mostrava os bastidores da escrita do livro. Este texto foi removido do livro e <a href="./ed3/10anos-regex.pdf">colocado aqui no site</a>.
+                    Muito pediram, durante muito tempo, e finalmente em 2016 o piazinho entra na era digital. Além do livro impresso, agora também está disponível no formato eletrônico (e-book). Este é o primeiro lançamento digital da Novatec Editora (piazinho pioneiro!). Visite suas lojas de e-book preferidas (Amazon, Google, Apple) para ter o "e-piazinho" em seus dispositivos e poder aprender expressões regulares em qualquer lugar.
                 </dd>
             </dl>
 
