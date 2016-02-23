@@ -36,7 +36,7 @@ body {
 #topbanner img,
 #topbanner h1 {
 	display: inline-block;
-	vertical-align: middle;	
+	vertical-align: middle;
 }
 #topbanner h1 {
 	font-size: 200% !important;
@@ -111,8 +111,13 @@ body {
 }
 
 #footer {
-	float:right;
-	font-size:85%;
+	text-align: right;
+	padding: 50px 180px 40px 0;
+	background: transparent url(img/piazinho-joia.png) right bottom no-repeat;
+}
+#footer .github-edit {
+	display: block;
+	margin-top: 1em;
 }
 
 /* Share */
