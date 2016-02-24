@@ -193,6 +193,9 @@ body.opiniao #header {
 	display:none;
 }
 */
+.index td {
+	vertical-align: top;
+}
 body.index .toc ul {
 	list-style-type: none !important;
 	margin-left: 0 !important;
