@@ -11,6 +11,7 @@ dl dd { margin-left:2em; }
 dl dt { margin:1em 0; }
 p { margin:1em 0;}
 /* ------------------------------------------------------------------- */
+.clearfix { clear: both; }
 
 body {
 	padding:30px;
