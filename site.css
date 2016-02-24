@@ -208,3 +208,38 @@ table#primeira {
 .imglinkbordered img:hover {
 	border-color: red;
 }
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+	/* Decrease colored borders */
+	body {
+		padding: 5px;
+	}
+	#main {
+		padding: 10px;
+	}
+	#main h2 {
+		border-width: 5px;
+	}
+	/* Decrease margins */
+	dl {
+		margin: 1em 0;
+	}
+	dl dd {
+		margin-left: 1em;
+	}
+	#main td {
+		padding: 3px;
+	}
+	/* Resize elements */
+	#faixa {
+		width: 90px;
+		height: 90px;
+	}
+	iframe {
+		width: 100%;
+	}
+	img {
+		max-width: 100%;
+	}
+}
