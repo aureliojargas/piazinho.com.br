@@ -266,4 +266,11 @@ table#primeira {
 		float: none;
 		margin: 1em auto;
 	}
+	/* Remove 1st and 2nd editions columns */
+	.index .difftable th:nth-child(3),
+	.index .difftable td:nth-child(3),
+	.index .difftable th:nth-child(2),
+	.index .difftable td:nth-child(2) {
+		display: none;
+	}
 }
