@@ -101,6 +101,7 @@ body {
 #main ul li {
 	padding:0.3em 0;
 }
+#main td i,
 #main ul li i {
 	color:#444;
 	font-size:85%;
