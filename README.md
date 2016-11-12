@@ -1,6 +1,6 @@
-# piazinho.com.br
+# http://piazinho.com.br
 
-EN: Sources for http://piazinho.com.br, the website for my regular expressions book.
+EN: Website for my Regular Expressions book.
 
-PT: Fontes do site do meu livro de expressões regulares, o http://piazinho.com.br.
+PT: Site do meu livro de Expressões Regulares.
 
